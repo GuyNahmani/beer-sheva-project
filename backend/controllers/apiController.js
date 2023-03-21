@@ -5,13 +5,9 @@ const getInfo = async (req, res) => {
     try {
         const response = await axios.get(baseUrl);
         const RawData = response.data;
-
-        const records = RawData.result.records
-        
-        const {lat,lon} = records[1] //show only 1 result and its name of the shelter
-        
-        console.log(lat,lon)
-        res.status(200).json("working");
+        const records = RawData.result.records;
+       
+     res.send(records);
 
     } catch (error) {
         res.status(500).json({
